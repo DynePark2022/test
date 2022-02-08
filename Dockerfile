@@ -1,13 +1,13 @@
-FROM ubuntu:20.04
+FROM node:10
 
-WORKDIR /app
+WORKDIR /usr/src/app
 
-COPY package*.json /app/
+COPY package*.json ./
 
-RUN apt update && apt install npm && npm istall
+RUN npm install
 
-COPY . /app
+COPY . .
 
-EXPOSE 3000
+EXPOSE 8080
 
-CMD ["npm", "start"]
+CMD [ "node", "server.js" ]
